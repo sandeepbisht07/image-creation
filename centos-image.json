@@ -9,7 +9,9 @@
       "image_family": "centos-custom-family",
       "ssh_username": "centos",
       "image_description": "Custom CentOS Image created by Packer",
-      "boot_disk_size": "10", 
+      "boot_disk": {
+        "size": 10
+      }, 
       "tags": ["packer", "centos"],
       "network": "default"
     }
