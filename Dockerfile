@@ -1,4 +1,4 @@
-FROM alpine:3.18 AS build
+FROM ubuntu:20.04 AS build
 
 COPY packer_1.9.1_linux_amd64.zip .
 
