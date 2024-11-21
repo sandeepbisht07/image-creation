@@ -21,7 +21,9 @@
             "type": "pd-ssd"
           }
         }
-      ],
+      ]
+    }
+    ],
     "provisioners": [
       {
         "type": "shell",
