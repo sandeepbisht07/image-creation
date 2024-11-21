@@ -1,4 +1,7 @@
 steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['gcloud', 'builds', 'submit']
+
   - name: 'gcr.io/cloud-builders/curl'
     args:
       - '-LO'
@@ -7,3 +10,7 @@ steps:
   - name: 'gcr.io/cloud-builders/unzip'
     args:
       - 'packer_1.8.6_linux_amd64.zip'
+
+logsBucket: 'gs://imagecloudbuildlogs'  
+options:
+  logging: 'CLOUD_LOGGING_ONLY' 
