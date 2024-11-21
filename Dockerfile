@@ -12,9 +12,7 @@ RUN apt-get update && \
     python3-pip \
     git \
     sudo \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* 
-
-RUN pip3 install ansible
+    && apt-get clean && rm -rf /var/lib/apt/lists/* && pip3 install ansible
 
 RUN curl -Lo /tmp/packer.zip "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && \
     unzip /tmp/packer.zip -d /usr/bin/ && \
@@ -23,8 +21,7 @@ RUN curl -Lo /tmp/packer.zip "https://releases.hashicorp.com/packer/${PACKER_VER
 
 # Verify Packer and Ansible installation
 
-RUN ansible --version
-RUN packer --version
+RUN ansible --version && RUN packer --version
 
 # Set default command
 CMD ["bash"]

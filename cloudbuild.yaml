@@ -5,7 +5,7 @@ steps:
            '.']
 
 images:
-  - 'gcr.io/$PROJECT_ID/packer-ansible:latest'
+  - 'gcr.io/$PROJECT_ID/packer-ansible-image:latest'
 
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
