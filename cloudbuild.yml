@@ -11,6 +11,5 @@ steps:
     args:
       - 'packer_1.8.6_linux_amd64.zip'
 
-logsBucket: 'gs://imagecloudbuildlogs'  
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
