@@ -1,15 +1,10 @@
 steps:
 - name: 'gcr.io/$PROJECT_ID/packer-ansible-image'
+  entrypoint: 'bash'
   args:
-  - init
-  - /workspace/packer-build/packer-image.pkr.hcl
-
-- name: 'gcr.io/$PROJECT_ID/packer-ansible-image'
-  args:
-  - build
-  - /workspace/packer-build/packer-image.pkr.hcl
-
-
+    - '-c'
+    - |
+      packer init /workspace/packer-build/packer-image.pkr.hcl
 
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
