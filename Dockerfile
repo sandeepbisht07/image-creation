@@ -21,5 +21,3 @@ RUN curl -Lo /tmp/packer.zip "https://releases.hashicorp.com/packer/${PACKER_VER
 # Verify Packer and Ansible installation
 
 RUN ansible --version && packer --version
-
-ENTRYPOINT ["/bin/bash"]
