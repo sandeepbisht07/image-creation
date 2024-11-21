@@ -8,26 +8,28 @@ steps:
     args:
       - '-c'
       - |
+        echo "Unzipping Packer"
         apt-get update && apt-get install -y unzip
         unzip /workspace/packer.zip -d /workspace/packer
-        mv /workspace/packer/packer /usr/local/bin/packer
-        chmod +x /usr/local/bin/packer
-        packer --version
+        ls -al /workspace/ # List the contents to verify extraction
 
+  # Step 2: Move Packer to /usr/local/bin and ensure it's executable
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        /usr/local/bin/packer build /workspace/centos-image.json
+        echo "Moving Packer to /usr/local/bin"
+        mv /workspace/packer/packer /usr/local/bin/packer
+        chmod +x /usr/local/bin/packer
+        ls -al /usr/local/bin/packer  # List to ensure the binary is moved
 
-  - name: 'gcr.io/cloud-builders/gcloud'
+  # Step 3: Verify Packer Installation
+  - name: 'ubuntu'
+    entrypoint: 'bash'
     args:
-      - 'compute'
-      - 'images'
-      - 'describe'
-      - '--image=centos-7-custom-{{timestamp}}'
-      - '--project=optical-highway-442406-c0'  
+      - '-c'
+      - 'packer --version'  
 
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
