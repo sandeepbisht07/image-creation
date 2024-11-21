@@ -19,7 +19,7 @@ steps:
     args:
       - '-c'
       - |
-        packer build /workspace/centos-image.json
+        /usr/local/bin/packer build /workspace/centos-image.json
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
