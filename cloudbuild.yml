@@ -1,7 +1,4 @@
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['gcloud', 'builds', 'submit']
-
   - name: 'gcr.io/cloud-builders/curl'
     args:
       - '-LO'
