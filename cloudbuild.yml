@@ -1,0 +1,9 @@
+steps:
+  - name: 'gcr.io/cloud-builders/curl'
+    args:
+      - '-LO'
+      - 'https://releases.hashicorp.com/packer/1.8.6/packer_1.8.6_linux_amd64.zip'
+
+  - name: 'gcr.io/cloud-builders/unzip'
+    args:
+      - 'packer_1.8.6_linux_amd64.zip'
