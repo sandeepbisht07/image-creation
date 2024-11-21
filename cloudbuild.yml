@@ -1,8 +1,5 @@
 steps:
-  # Step 1: Download Packer binary from Google Cloud Storage
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'gs://cloudbuildpackage/packer.zip', '/workspace/packer.zip']
-
+  
   # Step 2: Unzip the downloaded Packer binary in CentOS VM
   - name: 'centos'
     entrypoint: 'bash'
@@ -10,23 +7,6 @@ steps:
       - '-c'
       - |
         yum update -y && yum install -y unzip  # Install unzip if not installed
-        unzip /workspace/packer.zip -d /workspace/packer  # Unzip the Packer binary
-
-  # Step 3: Move the Packer binary to /usr/local/bin and make it executable
-  - name: 'centos'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        mv /workspace/packer/packer /usr/local/bin/packer  # Move binary to PATH
-        chmod +x /usr/local/bin/packer  # Make Packer executable
-
-  # Step 4: Verify Packer installation
-  - name: 'centos'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - 'packer --version'  # Verify that Packer is correctly installed
-
+  
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
