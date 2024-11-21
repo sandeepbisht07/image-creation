@@ -3,7 +3,6 @@ FROM alpine:3.18 AS build
 ARG PACKER_VERSION
 
 COPY packer_1.9.1_linux_amd64.zip .
-RUN echo "packer_1.9.1_linux_amd64.zip" > checksum && sha256sum -c checksum
 
 RUN /usr/bin/unzip packer_1.9.1_linux_amd64.zip
 
