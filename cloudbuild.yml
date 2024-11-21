@@ -20,7 +20,7 @@ steps:
       - '-c'
       - |
         echo "Moving Packer to /usr/local/bin"
-        mv /workspace/packer/packer /usr/bin/packer
+        cp -pr /workspace/packer/packer /usr/bin/packer
         chmod +x /usr/bin/packer
         ls -al /usr/bin/packer  # List to ensure the binary is moved
         echo "Checking Packer version"
@@ -31,7 +31,8 @@ steps:
     args:
       - '-c'
       - |
-        packer build /workspace/centos-image.json
+        echo $PATH
+        /workspace/packer/packer build /workspace/centos-image.json
 
    
 
