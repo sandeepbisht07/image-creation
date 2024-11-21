@@ -1,28 +1,10 @@
 steps:
   
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'gs://cloudbuildpackage/packer.zip', '/workspace/packer.zip']
-
-  - name: 'ubuntu'
-    entrypoint: 'bash'
+  - name: 'gcr.io/optical-highway-442406-c0/packer'
     args:
-      - '-c'
-      - |
-        echo "Unzipping Packer"
-        apt-get update && apt-get install -y unzip ca-certificates curl
-        apt-get install --reinstall ca-certificates -y
-        unzip /workspace/packer.zip -d /workspace/packer
-        ls -al /workspace/ # List the contents to verify extraction
+    - init
+    - packer-image.pkr.hcl
 
-  - name: 'ubuntu'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        /workspace/packer/packer init /workspace/packer-image.pkr.hcl
-       
-
-   
-
+  
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
