@@ -26,6 +26,13 @@ steps:
         echo "Checking Packer version"
         packer --version 
 
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        packer build /workspace/centos-image.json
+
    
 
 options:
