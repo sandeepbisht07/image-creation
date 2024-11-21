@@ -4,7 +4,12 @@ steps:
   - init
   - /workspace/packer-build/packer-image.pkr.hcl
 
-tags: ['cloud-builders-community']
+- name: 'gcr.io/$PROJECT_ID/packer'
+  args:
+  - build
+  - /workspace/packer-build/packer-image.pkr.hcl
+
+
 
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
