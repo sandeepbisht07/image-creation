@@ -12,11 +12,12 @@ RUN apt-get update && \
     python3-pip \
     git \
     sudo \
-    && apt-get clean
+    && apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 RUN pip3 install ansible
 
 RUN curl -Lo /usr/bin/packer "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && \
+    unzip /usr/bin/packer -d /usr/bin/ && \
     chmod +x /usr/bin/packer
 
 
