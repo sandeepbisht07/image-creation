@@ -1,12 +1,17 @@
 steps:
   
-  # Step 2: Unzip the downloaded Packer binary in CentOS VM
-  - name: 'centos'
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'gs://cloudbuildpackage/packer.zip', '/workspace/packer.zip']
+
+  - name: 'ubuntu'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        yum update -y && yum install -y unzip  # Install unzip if not installed
+        apt-get update && apt-get install -y unzip
+        unzip /workspace/packer.zip -d /workspace/packer
+        mv /workspace/packer/packer /usr/local/bin/packer
+        chmod +x /usr/local/bin/packer
   
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
