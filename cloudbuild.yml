@@ -14,6 +14,20 @@ steps:
         chmod +x /usr/local/bin/packer
         packer --version
 
-    
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        packer build /workspace/centos-image.json
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'compute'
+      - 'images'
+      - 'describe'
+      - '--image=centos-7-custom-{{timestamp}}'
+      - '--project=optical-highway-442406-c0'  
+
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
