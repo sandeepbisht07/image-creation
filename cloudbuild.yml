@@ -31,7 +31,6 @@ steps:
     args:
       - '-c'
       - |
-        echo $PATH
         /workspace/packer/packer build /workspace/centos-image.json
 
    
