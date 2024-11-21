@@ -5,6 +5,7 @@ steps:
     - '-c'
     - |
       packer init /workspace/packer-build/packer-image.pkr.hcl
+      packer build /workspace/packer-build/packer-image.pkr.hcl
 
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
