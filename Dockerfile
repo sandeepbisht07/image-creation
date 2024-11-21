@@ -16,8 +16,8 @@ RUN apt-get update && \
 
 RUN pip3 install ansible
 
-RUN curl -Lo /usr/bin/packer "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && \
-    unzip /usr/bin/packer -d /usr/bin/ && \
+RUN curl -Lo /tmp/packer.zip "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && \
+    unzip /tmp/packer.zip -d /usr/bin/ && \
     chmod +x /usr/bin/packer
 
 
