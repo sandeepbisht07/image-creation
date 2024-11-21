@@ -19,7 +19,7 @@ steps:
       - '-c'
       - |
         /workspace/packer/packer init /workspace/packer-image.pkr.hcl
-        /workspace/packer/packer build /workspace/packer-image.pkr.hcl
+       
 
    
 
