@@ -3,7 +3,7 @@
     {
       "type": "googlecompute",
       "project_id": "optical-highway-442406-c0",
-      "source_image_family": "ubuntu-2004-lts",
+      "source_image": "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20241115",
       "zone": "asia-east1-a",
       "image_name": "ubuntu-custom-image-{{timestamp}}",
       "image_family": "ubuntu-custom-family",
