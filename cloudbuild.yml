@@ -12,6 +12,12 @@ steps:
         unzip /workspace/packer.zip -d /workspace/packer
         mv /workspace/packer/packer /usr/local/bin/packer
         chmod +x /usr/local/bin/packer
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'packer --version'
   
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
