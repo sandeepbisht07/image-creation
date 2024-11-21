@@ -13,25 +13,13 @@ steps:
         unzip /workspace/packer.zip -d /workspace/packer
         ls -al /workspace/ # List the contents to verify extraction
 
-  # Step 2: Move Packer to /usr/local/bin and ensure it's executable
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        echo "Moving Packer to /usr/local/bin"
-        cp -pr /workspace/packer/packer /usr/bin/packer
-        chmod +x /usr/bin/packer
-        ls -al /usr/bin/packer  # List to ensure the binary is moved
-        echo "Checking Packer version"
-        packer --version 
-
-  - name: 'ubuntu'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        /workspace/packer/packer build /workspace/centos-image.json
+        /workspace/packer/packer init /workspace/packer-image.pkr.hcl
+        /workspace/packer/packer build /workspace/packer-image.pkr.hcl
 
    
 
