@@ -21,7 +21,7 @@ RUN curl -Lo /tmp/packer.zip "https://releases.hashicorp.com/packer/${PACKER_VER
 
 # Verify Packer and Ansible installation
 
-RUN ansible --version && RUN packer --version
+RUN ansible --version && packer --version
 
 # Set default command
 CMD ["bash"]
