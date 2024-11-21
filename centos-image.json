@@ -10,18 +10,7 @@
       "ssh_username": "centos",
       "image_description": "Custom CentOS Image created by Packer",
       "tags": ["packer", "centos"],
-      "network": "default",
-      "disks": [
-        {
-          "auto_delete": true,
-          "boot": true,
-          "initialize_params": {
-            "image": "projects/centos-cloud/global/images/centos-7-v20201001", 
-            "size": 10,
-            "type": "pd-ssd"
-          }
-        }
-      ]
+      "network": "default"
     }
     ],
     "provisioners": [
