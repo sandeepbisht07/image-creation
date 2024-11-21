@@ -2,7 +2,6 @@ FROM ubuntu:20.04
 
 # Set environment variables for dynamic versioning
 ENV PACKER_VERSION=1.9.1
-ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y \
@@ -23,5 +22,4 @@ RUN curl -Lo /tmp/packer.zip "https://releases.hashicorp.com/packer/${PACKER_VER
 
 RUN ansible --version && packer --version
 
-# Set default command
-CMD ["bash"]
+ENTRYPOINT ["/bin/bash"]
