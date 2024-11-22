@@ -21,6 +21,8 @@ build {
   sources = ["sources.googlecompute.ubuntu"]
 
   provisioner "ansible" {
-    playbook_file = "/workspace/packer-build/ansible/playbooks/playbook.yml"
+    playbook_file = "/workspace/packer-build/ansible/playbooks/playbook.yml",
+    extra_arguments: [ "-vvv" ],
+    user: "{{user `ssh_username`}}"
   }
 }

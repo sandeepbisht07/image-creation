@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx on Ubuntu
-  hosts: localhost
+  hosts: all
   become: true
   gather_facts: False
   tasks:
