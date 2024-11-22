@@ -1,5 +1,5 @@
 ---
-- name: Install Nginx and MySQL on Ubuntu
+- name: Install Nginx on Ubuntu
   hosts: localhost
   become: true
   gather_facts: False
