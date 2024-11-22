@@ -23,6 +23,6 @@ build {
   provisioner "ansible" {
     playbook_file = "/workspace/packer-build/ansible/playbooks/playbook.yml"
     extra_arguments = [ "-vvv" ]
-    user = "{{user `ssh_username`}}"
+    user = "ubuntu"
   }
 }
