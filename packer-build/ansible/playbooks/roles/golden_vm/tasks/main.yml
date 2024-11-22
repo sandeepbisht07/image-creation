@@ -1,0 +1,28 @@
+---
+# tasks file for golden_vm
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install Nginx
+  apt:
+    name: "{{ nginx_package }}"
+    state: present
+
+- name: Install MySQL
+  apt:
+    name: "{{ mysql_package }}"
+    state: present
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Start and enable MySQL
+  service:
+    name: mysql
+    state: started
+    enabled: yes

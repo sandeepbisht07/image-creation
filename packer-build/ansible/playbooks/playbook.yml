@@ -1,0 +1,8 @@
+---
+- name: Install Nginx and MySQL on Ubuntu
+  hosts: localhost
+  become: true
+  gather_facts: False
+  tasks:
+  - include_role:
+      name: golden_vm

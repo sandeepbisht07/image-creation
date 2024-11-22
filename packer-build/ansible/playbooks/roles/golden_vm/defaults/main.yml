@@ -1,0 +1,5 @@
+---
+# defaults file for golden_vm
+
+nginx_package: nginx
+mysql_package: mysql-server

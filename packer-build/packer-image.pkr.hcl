@@ -20,12 +20,7 @@ source "googlecompute" "ubuntu" {
 build {
   sources = ["sources.googlecompute.ubuntu"]
 
-  provisioner "shell" {
-    inline = [
-      "echo Installing Updates",
-      "sudo apt-get update",
-      "sudo apt-get upgrade -y",
-      "sudo apt-get install -y nginx"
-    ]
+  provisioner "ansible" {
+    playbook_file = "/workspace/packer-build/ansible/playbooks/playbook.yml"
   }
 }
