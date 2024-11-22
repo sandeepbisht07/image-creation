@@ -1,9 +1,19 @@
 ---
 # tasks file for golden_vm
 
+- name: Install apt-utils to avoid Debconf delay
+  apt:
+    name: apt-utils
+    state: present
+
 - name: Update apt cache
   apt:
     update_cache: yes
+
+- name: Upgrade all packages
+  apt:
+    upgrade: yes
+    autoclean: yes
 
 - name: Install Nginx
   apt:
