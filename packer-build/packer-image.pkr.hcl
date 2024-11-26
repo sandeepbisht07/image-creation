@@ -14,7 +14,7 @@ source "googlecompute" "ubuntu" {
   source_image_family = "ubuntu-2004-lts"
   ssh_username        = "ubuntu"
   tags         = ["packer"]
-  zone         = "asia-east1-a"
+  zone         = "us-central1-a"
 }
 
 build {
