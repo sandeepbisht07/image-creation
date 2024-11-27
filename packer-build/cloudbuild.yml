@@ -9,6 +9,15 @@ steps:
         ssh-keygen -t rsa -b 2048 -f /workspace/id_rsa -N ""
         echo "SSH Key Pair generated."
 
+  - name: "alpine"
+    id: "list-ssh-files"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        ls -l /workspace
+        echo "Listing files in /workspace."
+
   - name: "hashicorp/packer"
     id: "packer-build"
     entrypoint: "bash"
