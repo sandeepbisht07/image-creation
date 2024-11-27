@@ -33,9 +33,12 @@ source "googlecompute" "ubuntuvm" {
 build {
   sources = ["sources.googlecompute.ubuntuvm"]
 
-  provisioner "ansible" {
-    playbook_file = "/workspace/packer-build/ansible/playbooks/playbook.yml"
-    extra_arguments = [ "-vvv" ]
-    user = "ubuntu"
+  provisioner "shell" {
+    inline = [
+      "echo Installing Updates",
+      "sudo apt-get update",
+      "sudo apt-get upgrade -y",
+      "sudo apt-get install -y nginx"
+    ]
   }
 }

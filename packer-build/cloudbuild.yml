@@ -9,8 +9,9 @@ steps:
         ssh-keygen -t rsa -b 2048 -f /workspace/id_rsa -N ""
         echo "SSH Key Pair generated."
 
-  - name: 'gcr.io/$PROJECT_ID/packer-ansible-image'
-    entrypoint: 'bash'
+  - name: "hashicorp/packer"
+    id: "packer-build"
+    entrypoint: "bash"
     args:
       - '-c'
       - |
