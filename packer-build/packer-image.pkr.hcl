@@ -24,10 +24,9 @@ source "googlecompute" "ubuntuvm" {
   #wait_to_add_ssh_keys = "20s"
   #ssh_agent_auth = true
   ssh_private_key_file = "/workspace/id_rsa"
-  ssh_public_key_file  = "/workspace/id_rsa.pub"
-  #use_iap = true
-  #use_os_login = true
-  #metadata = {     block-project-ssh-keys = "true"   }
+  metadata = {
+    "ssh-keys" = "ubuntu:${file("/workspace/id_rsa.pub")}"
+  }
   #impersonate_service_account = "cloud-build@my-project-amit1-415215.iam.gserviceaccount.com"
 }
 
