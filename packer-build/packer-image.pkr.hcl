@@ -40,5 +40,8 @@ build {
       "sudo apt-get upgrade -y",
       "sudo apt-get install -y nginx"
     ]
+    ssh_username = "ubuntu"
+    ssh_agent_auth = true
+    ssh_private_key_file = "/workspace/id_rsa"
   }
 }
