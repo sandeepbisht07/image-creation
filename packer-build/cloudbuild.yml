@@ -5,6 +5,7 @@ steps:
     args:
       - "-c"
       - |
+        apk update && apk add openssh
         # Create an SSH key pair (without passphrase)
         ssh-keygen -t rsa -b 2048 -f /workspace/id_rsa -N ""
         echo "SSH Key Pair generated."
