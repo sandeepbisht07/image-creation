@@ -17,7 +17,7 @@ steps:
         export SSH_PRIVATE_KEY_FILE=/workspace/id_rsa
         export SSH_PUBLIC_KEY_FILE=/workspace/id_rsa.pub
         packer init /workspace/packer-build/packer-image.pkr.hcl
-        packer build -var "ssh_private_key_file=$SSH_PRIVATE_KEY_FILE" -var "ssh_public_key_file=$SSH_PUBLIC_KEY_FILE" /workspace/packer-build/packer-image.pkr.hcl
+        PACKER_LOG=1 packer build /workspace/packer-build/packer-image.pkr.hcl
 
 options:
   logging: 'CLOUD_LOGGING_ONLY' 
