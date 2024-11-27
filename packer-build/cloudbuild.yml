@@ -1,11 +1,23 @@
 steps:
+- name: "alpine"
+    id: "generate-ssh-key"
+    entrypoint: "sh"
+    args:
+      - "-c"
+      - |
+        # Create an SSH key pair (without passphrase)
+        ssh-keygen -t rsa -b 2048 -f /workspace/id_rsa -N ""
+        echo "SSH Key Pair generated."
+
 - name: 'gcr.io/$PROJECT_ID/packer-ansible-image'
   entrypoint: 'bash'
   args:
     - '-c'
     - |
+      export SSH_PRIVATE_KEY_FILE=/workspace/id_rsa
+      export SSH_PUBLIC_KEY_FILE=/workspace/id_rsa.pub
       packer init /workspace/packer-build/packer-image.pkr.hcl
-      packer build /workspace/packer-build/packer-image.pkr.hcl
+      packer build -var "ssh_private_key_file=$SSH_PRIVATE_KEY_FILE" -var "ssh_public_key_file=$SSH_PUBLIC_KEY_FILE" /workspace/packer-build/packer-image.pkr.hcl
 
 options:
   logging: 'CLOUD_LOGGING_ONLY' 

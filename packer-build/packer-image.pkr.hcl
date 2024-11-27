@@ -7,7 +7,7 @@ packer {
   }
 }
 
-source "googlecompute" "ubuntu" {
+source "googlecompute" "ubuntuvm" {
   image_name          = "packer-ubuntu-gcp-{{timestamp}}"
   image_description   = "Ubuntu 20-04 Image with Ngnix-{{timestamp}}"
   project_id          = "my-project-amit1-415215"
@@ -22,6 +22,8 @@ source "googlecompute" "ubuntu" {
   tags = ["packer-image", "packer"]
   #wait_to_add_ssh_keys = "20s"
   ssh_agent_auth = true
+  ssh_private_key_file = "{{user `ssh_private_key_file`}}"
+  ssh_public_key_file  = "{{user `ssh_public_key_file`}}"
   #use_iap = true
   #use_os_login = true
   #metadata = {     block-project-ssh-keys = "true"   }
@@ -29,7 +31,7 @@ source "googlecompute" "ubuntu" {
 }
 
 build {
-  sources = ["sources.googlecompute.ubuntu"]
+  sources = ["sources.googlecompute.ubuntuvm"]
 
   provisioner "ansible" {
     playbook_file = "/workspace/packer-build/ansible/playbooks/playbook.yml"
