@@ -16,14 +16,15 @@ source "googlecompute" "ubuntuvm" {
   subnetwork          = "projects/my-project-amit1-415215/regions/us-central1/subnetworks/project-my-project-amit1-415215-spoke-subnet"
   source_image_family = "ubuntu-2004-lts"
   ssh_username        = "ubuntu"
+  machine_type         = "n1-standard-1"
   zone                = "us-central1-a"
   use_internal_ip    = true
   omit_external_ip   = true
   tags = ["packer-image", "packer"]
   #wait_to_add_ssh_keys = "20s"
   ssh_agent_auth = true
-  ssh_private_key_file = "{{user `ssh_private_key_file`}}"
-  ssh_public_key_file  = "{{user `ssh_public_key_file`}}"
+  ssh_private_key_file = "{{env `SSH_PRIVATE_KEY_FILE`}}"
+  ssh_public_key_file  = "{{env `SSH_PUBLIC_KEY_FILE`}}"
   #use_iap = true
   #use_os_login = true
   #metadata = {     block-project-ssh-keys = "true"   }
