@@ -8,13 +8,24 @@ packer {
 }
 
 source "googlecompute" "ubuntu" {
-  image_name        = "packer-ubuntu-gcp-{{timestamp}}"
-  image_description = "Ubuntu 20-04 Image with Ngnix-{{timestamp}}"
-  project_id          = "optical-highway-442406-c0"
+  image_name          = "packer-ubuntu-gcp-{{timestamp}}"
+  image_description   = "Ubuntu 20-04 Image with Ngnix-{{timestamp}}"
+  project_id          = "my-project-amit1-415215"
+  network_project_id  = "my-project-amit1-415215"
+  network             = "projects/my-project-amit1-415215/global/networks/project-my-project-amit1-415215-spoke-vpc"
+  subnetwork          = "projects/my-project-amit1-415215/regions/us-central1/subnetworks/project-my-project-amit1-415215-spoke-subnet"
   source_image_family = "ubuntu-2004-lts"
   ssh_username        = "ubuntu"
-  tags         = ["packer"]
-  zone         = "us-central1-a"
+  zone                = "us-central1-a"
+  use_internal_ip    = true
+  omit_external_ip   = true
+  tags = ["packer-image", "packer"]
+  #wait_to_add_ssh_keys = "20s"
+  ssh_agent_auth = true
+  #use_iap = true
+  #use_os_login = true
+  #metadata = {     block-project-ssh-keys = "true"   }
+  #impersonate_service_account = "cloud-build@my-project-amit1-415215.iam.gserviceaccount.com"
 }
 
 build {
